@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Store | Tu Tienda Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <a href="admin.html" class="admin-corner-btn" title="Panel Administrativo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+    </a>
+
+    <header class="header">
+        <div class="container nav-container">
+            <div class="brand-container">
+                <h1 class="logo">Premium<span>Store</span></h1>
+            </div>
+            <div class="header-actions">
+                <select id="categorySelect" class="category-select" onchange="filterByCategory(this.value)">
+                    <option value="all">Todas las Categorías</option>
+                </select>
+                <button id="openCartBtn" class="cart-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+                        <path d="M3 6h18"></path>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span id="cartCount" class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 2rem;">
+        <div id="productsGrid" class="products-grid">
+            <p style="text-align: center; color: var(--text-muted); grid-column: 1/-1;">Cargando productos...</p>
+        </div>
+    </main>
+
+    <div id="productModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('productModal')">&times;</button>
+            <div class="modal-img">
+                <img id="modalImage" src="" alt="">
+            </div>
+            <div class="modal-details">
+                <span id="modalCategory" class="card-category"></span>
+                <h2 id="modalTitle"></h2>
+                <p id="modalPrice" class="modal-price"></p>
+                <p id="modalDescription" class="modal-desc"></p>
+                <button id="addToCartBtn" class="btn" style="width: 100%; margin-top: 1rem;">🛒 Agregar al Carrito</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cartModal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 450px; flex-direction: column;">
+            <button class="close-modal" onclick="closeModal('cartModal')">&times;</button>
+            <h2 style="margin-top:0;">🛒 Tu Carrito</h2>
+            <div id="cartList" class="cart-items-container"></div>
+            <div class="cart-total-section">
+                <span>Total:</span>
+                <span id="cartTotal">$0</span>
+            </div>
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <input type="text" id="cName" placeholder="Nombre Completo" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="cContact" placeholder="Teléfono" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="cCedula" placeholder="Cédula" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="cAddress" placeholder="Dirección de Entrega" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">✅ Finalizar Pedido</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

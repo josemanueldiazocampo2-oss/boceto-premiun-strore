@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control | Premium Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loginScreen" class="login-screen">
+        <form class="glass-panel login-box" onsubmit="handleLogin(event)">
+            <div class="login-header">
+                <h2>🔐 Acceso Administrativo</h2>
+                <p style="color: var(--text-muted); margin: 0;">Premium Store</p>
+            </div>
+            <div class="form-group">
+                <label>Usuario</label>
+                <input type="text" id="loginUsername" placeholder="Ingresa tu usuario" required>
+            </div>
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" id="loginPassword" placeholder="Ingresa tu contraseña" required>
+            </div>
+            <button type="submit" class="btn" style="width:100%">Entrar al Panel</button>
+        </form>
+    </div>
+
+    <div id="adminInterface" style="display:none;">
+        <div class="container">
+            <header class="admin-header glass-panel">
+                <div class="admin-header-left">
+                    <h1>Panel de Gestión</h1>
+                    <span id="currentUserDisplay" class="current-user"></span>
+                </div>
+                <div class="admin-header-actions">
+                    <a href="index.html" class="btn btn-secondary">🏪 Ver Tienda</a>
+                    <button onclick="logout()" class="btn">🚪 Cerrar Sesión</button>
+                </div>
+            </header>
+
+            <nav class="admin-nav">
+                <button class="nav-tab active" data-tab="orders" onclick="switchTab('orders')">
+                    📦 Pedidos
+                </button>
+                <button class="nav-tab" data-tab="products" onclick="switchTab('products')">
+                    🛍️ Productos
+                </button>
+                <button class="nav-tab" data-tab="team" onclick="switchTab('team')">
+                    👥 Equipo
+                </button>
+            </nav>
+
+            <div id="ordersSection" class="admin-section active">
+                <div class="glass-panel">
+                    <h2>📦 Pedidos Recibidos</h2>
+                    <div id="ordersList" class="orders-list">
+                        <p style="text-align:center; color: var(--text-muted);">Cargando pedidos...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="productsSection" class="admin-section">
+                <div class="admin-layout">
+                    <section class="glass-panel">
+                        <h2>➕ Nuevo Producto</h2>
+                        <form onsubmit="addProduct(event)">
+                            <div class="form-group">
+                                <label>Nombre del Producto *</label>
+                                <input type="text" id="productName" placeholder="Ej: Audífonos Gamer" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Precio *</label>
+                                <input type="number" id="productPrice" placeholder="Ej: 299000" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Categoría *</label>
+                                <input type="text" id="productCategory" placeholder="Ej: Electrónica" required>
+                            </div>
+                            <div class="form-group">
+                                <label>URL de Imagen *</label>
+                                <input type="url" id="productImage" placeholder="https://ejemplo.com/imagen.jpg" required>
+                            </div>
+                            <div id="imagePreview"></div>
+                            <div class="form-group">
+                                <label>Descripción</label>
+                                <textarea id="productDescription" placeholder="Descripción del producto..." rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn" style="width:100%">📤 Subir Producto</button>
+                        </form>
+                    </section>
+
+                    <section class="glass-panel">
+                        <h2>📋 Inventario</h2>
+                        <div id="inventoryList" class="inventory-list">
+                            <p style="text-align:center; color: var(--text-muted);">Cargando productos...</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div id="teamSection" class="admin-section">
+                <div class="admin-layout">
+                    <section class="glass-panel">
+                        <h2>➕ Agregar Administrador</h2>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+                            Solo el administrador principal puede agregar nuevos miembros al equipo.
+                        </p>
+                        <form onsubmit="addAdmin(event)">
+                            <div class="form-group">
+                                <label>Nombre de Usuario *</label>
+                                <input type="text" id="newAdminUsername" placeholder="Ej: MARIA" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Contraseña *</label>
+                                <input type="password" id="newAdminPassword" placeholder="Mínimo 4 caracteres" required>
+                            </div>
+                            <button type="submit" class="btn" style="width:100%">👤 Agregar Administrador</button>
+                        </form>
+                    </section>
+
+                    <section class="glass-panel">
+                        <h2>👥 Equipo de Trabajo</h2>
+                        <div id="teamList" class="team-list">
+                            <p style="text-align:center; color: var(--text-muted);">Cargando equipo...</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="admin.js"></script>
+</body>
+</html>
