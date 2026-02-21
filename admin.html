@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control | Premium Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="loginScreen" class="login-screen">
+            <form class="glass-panel login-box" onsubmit="handleLogin(event)">
+                <h2>Acceso Administrativo</h2>
+                <input type="text" id="loginUsername" placeholder="Usuario" class="form-group" required>
+                <input type="password" id="loginPassword" placeholder="Contraseña" class="form-group" required>
+                <button type="submit" class="btn" style="width:100%">Entrar</button>
+            </form>
+        </div>
+
+        <div id="adminInterface" style="display:none;">
+            <header class="admin-header glass-panel">
+                <h1>Panel de Gestión</h1>
+                <button onclick="localStorage.removeItem('currentUser'); location.reload();" class="btn">Cerrar
+                    Sesión</button>
+            </header>
+
+            <div class="admin-grid">
+                <section class="glass-panel">
+                    <h2>Pedidos Recibidos</h2>
+                    <div id="ordersList"></div>
+                </section>
+
+                <section class="glass-panel">
+                    <h2>Nuevo Producto</h2>
+                    <form onsubmit="addProduct(event)">
+                        <input type="text" id="productName" placeholder="Nombre" class="form-group" required>
+                        <input type="number" id="productPrice" placeholder="Precio" class="form-group" required>
+                        <input type="text" id="productCategory" placeholder="Categoría" class="form-group" required>
+                        <input type="text" id="productImage" placeholder="URL de Imagen" class="form-group" required>
+                        <textarea id="productDescription" placeholder="Descripción" class="form-group"></textarea>
+                        <button type="submit" class="btn" style="width:100%">Subir a la Nube</button>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

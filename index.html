@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Premiunstorebiyuewste | Página de Prueba para Google</title>
+
+    <meta name="description"
+        content="Esta es una pagina de prueba de Premiunstorebiyuewste para ver si puedo subir webs a google y probar la indexación en el buscador.">
+
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://josemanueldiazocampo2-oss.github.io/premiunstorebiyuewste/">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Admin Button - Top Left Corner -->
+    <a href="admin.html" class="admin-corner-btn" title="Admin Panel">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="m22 21-3-3"></path>
+            <path d="m16 15 3 3"></path>
+        </svg>
+    </a>
+
+    <div class="container">
+        <header>
+            <!-- Left: Empty space for balance -->
+            <div></div>
+
+            <!-- Centered Logo & Title -->
+            <div class="brand-container">
+                <img src="https://raw.githubusercontent.com/josemanueldiazocampo2-oss/imagenes-web/refs/heads/main/Gemini_Generated_Image_kbcockbcockbcock.png"
+                    alt="Store 3D Logo" class="store-logo">
+                <h1 class="seo-title">Premiunstorebiyuewste</h1>
+            </div>
+
+            <!-- Right Side: Categories + Cart -->
+            <div class="header-actions">
+                <select id="categoryFilter" class="category-select">
+                    <option value="all">Todas las Categorías</option>
+                </select>
+                <button id="openCartBtn" class="btn">
+                    🛒 <span id="cartCount">0</span>
+                </button>
+            </div>
+        </header>
+
+        <main id="productsGrid" class="products-grid">
+            <!-- Products injected by JS -->
+        </main>
+    </div>
+
+    <!-- Product Details Modal -->
+    <div id="productModal" class="modal-overlay">
+        <div class="modal-content glass-panel">
+            <button class="close-modal">&times;</button>
+            <div class="modal-img">
+                <img id="modalImage" src="" alt="Product Detail">
+            </div>
+            <div class="modal-details">
+                <span id="modalCategory" class="card-category">Category</span>
+                <h2 id="modalTitle" style="margin-top: 0; font-size: 2rem;">Product Name</h2>
+                <div id="modalPrice" class="card-price" style="font-size: 1.5rem; margin-bottom: 1rem;">$0.00</div>
+                <p id="modalDesc" style="line-height: 1.6; color: var(--text-muted);">
+                    Description goes here...
+                </p>
+                <div style="margin-top: 2rem;">
+                    <button class="btn" style="width: 100%; justify-content: center;"
+                        onclick="addToCart(currentModalProductId)">
+                        Agregar al Carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal-overlay">
+        <div class="modal-content glass-panel" style="flex-direction: column;">
+            <button class="close-modal">&times;</button>
+            <h2 style="margin-top:0;">Tu Carrito</h2>
+
+            <div id="cartList"
+                style="max-height: 200px; overflow-y: auto; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">
+                <!-- Cart Items -->
+            </div>
+
+            <div
+                style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.2rem; margin-bottom: 2rem;">
+                <span>Total:</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+
+            <form id="checkoutForm">
+                <h3 style="margin-bottom: 1rem;">Datos de Facturación</h3>
+                <div class="form-group">
+                    <input type="text" id="cName" placeholder="Nombre Completo" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="cContact" placeholder="Número de Contacto" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="cCedula" placeholder="Número de Cédula" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="cAddress" placeholder="Dirección de Envío" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Solicitar Pedido</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
